@@ -35,6 +35,7 @@ class CategoryItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(15)),
         child: Text(
           title,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
     );
