@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import './screens/tabs_screen.dart';
 
+import './screens/meal_details_screen.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/categories_screen.dart';
 
@@ -17,7 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'Schmancy',
       theme: ThemeData(
         primarySwatch: Colors.pink,
-        colorScheme: ColorScheme.fromSwatch(accentColor: Colors.grey),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.pink),
+        colorScheme: ColorScheme.fromSwatch(
+            accentColor: const Color.fromARGB(126, 255, 255, 255)),
         canvasColor: const Color.fromRGBO(255, 254, 229, 1),
       ),
       // fontFamily: 'Raleway',
@@ -34,8 +38,15 @@ class MyApp extends StatelessWidget {
       //         fontWeight: FontWeight.bold))
       //         ),
       routes: {
-        '/': (ctx) => const CategoriesScreen(),
-        CategoryMealsScreen.routeName: (ctx) => const CategoryMealsScreen()
+        '/': (ctx) => const TabsScreen(),
+        CategoryMealsScreen.routeName: (ctx) => const CategoryMealsScreen(),
+        MealDetailsScreen.routeName: (ctx) => const MealDetailsScreen(),
+      },
+      onGenerateRoute: (settings) {
+        return;
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => const CategoriesScreen());
       },
     );
   }
