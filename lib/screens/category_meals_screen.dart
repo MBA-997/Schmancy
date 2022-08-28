@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:schmancy/widgets/meal_item.dart';
-import '../dummy_data.dart';
+import '../models/meal.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = '/category-meals';
 
-  const CategoryMealsScreen({Key? key}) : super(key: key);
+  final List<Meal> availableMeals;
+
+  const CategoryMealsScreen({Key? key, required this.availableMeals})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class CategoryMealsScreen extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as Map<String, String>;
     final categoryId = routeArgs['id'];
     final categoryTitle = routeArgs['title'];
-    final categoryMeals = DUMMY_MEALS.where((meal) {
+    final categoryMeals = availableMeals.where((meal) {
       return meal.categories.contains(categoryId);
     }).toList();
 
